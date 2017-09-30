@@ -1,0 +1,48 @@
+// Mixins
+@mixin input-placeholder {
+    &.placeholder { @content; }
+    &:-moz-placeholder { @content; }
+    &::-moz-placeholder { @content; }
+    &:-ms-input-placeholder { @content; }
+    &::-webkit-input-placeholder { @content; }
+    // @include input-placeholder { rules... }
+}
+
+@mixin text($align: justify, $align-last: $align) {
+	text-align: $align;
+	text-align-last: $align-last;
+}
+
+@mixin size ($width, $height: auto) {
+	height: $height;
+	width: $width;
+}
+
+@mixin button($bg-color, $color: #fff) {
+	background: $bg-color;
+	color: $color;
+	
+	&:hover, &:focus, &:active {
+		background: lighten($bg-color, 7.5%);
+		outline: none;
+		box-shadow: none;
+		transition: $transition;
+	}
+}
+
+@mixin border-radius($radius) {
+	-webkit-border-radius: $radius;
+	-moz-border-radius: $radius;
+	-ms-border-radius: $radius;
+	border-radius: $radius;
+}
+@mixin elipse($radius: 50%) {
+	@include border-radius($radius);
+}
+
+@mixin va-middle() {
+	position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
+

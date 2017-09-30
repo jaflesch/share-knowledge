@@ -1,0 +1,15 @@
+html, body {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	line-height: 1.5;
+	height: auto;
+    min-height: 100%;
+    overflow-x: hidden;
+    background: $background-color;
+   	color: $text-color;
+}
+ul, ol { 
+	margin: 0;
+	padding: 0;
+}
