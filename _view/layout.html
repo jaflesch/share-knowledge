@@ -61,10 +61,13 @@
 		<link rel="stylesheet" href="{{ path.css }}/plugins/fontawesome/font-awesome.min.css">
 	</head>
 	<body>
+		<div id="sidebar">
+			{% include '_sidebar.html' %}
+		</div>
 		<div id="wrapper">
-			<header>
+			<!-- <header>
 				{% include '_header.html' %}
-			</header>
+			</header> -->
 			<main>
 				{% block main %}
 				{% endblock %}
@@ -87,7 +90,27 @@
 		  ga('create', 'UA-XXXXXXXX-X', 'auto');
 		  ga('send', 'pageview');
 		</script>
-		
+		<script type="text/javascript">
+			$(document).ready(function() {
+				$('.root .list li a').click(function(e) {
+					e.preventDefault();
+					var target = $(this).data('target');
+					var li_element = $(this).children('span').attr('class').split(' ').join('.');
+
+					$('.list.-child').hide();
+					$(".child .-navy li .active").removeClass('active');
+
+					$(".child .-navy li span." + li_element).parent().addClass('active');					
+					$(target).show();
+					$(this).parent().parent().parent().addClass('-shrink');
+				});
+
+				$('._reset-nav').click(function(e){
+					e.preventDefault();
+					$('.root').removeClass('-shrink');					
+				});
+			});
+		</script>
 		{% block scripts %}
 		{% endblock %}
 	</body>
